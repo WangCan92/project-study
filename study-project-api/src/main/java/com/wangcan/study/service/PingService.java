@@ -14,4 +14,7 @@ public interface PingService {
 
     @RequestMapping(value = "/hi",method = RequestMethod.GET)
     String hi();
+
+    @RequestMapping(value = "/tryLock",method = RequestMethod.POST)
+    void tryLock(String key,String value);
 }
