@@ -44,7 +44,7 @@ public class RedisUtil {
     }
 
     public static void tryLock(String key,String value){
-        StringRedisTemplate redisTemplate = SpringContextUtil.getBean(StringRedisTemplate.class);
+        RedisTemplate redisTemplate = SpringContextUtil.getBean(RedisTemplate.class);
         Object result = redisTemplate.execute((RedisCallback<String>) connection -> {
             JedisCommands commands = (JedisCommands) connection.getNativeConnection();
             return commands.set(key, value, "NX", "PX", DEFAULT_EXPIRE_MILLISECOND);
